@@ -5,6 +5,7 @@ using System.Text;
 
 namespace CoreFaces.Region.UnitTest
 {
+    [TestClass]
     public class CityServiceTest : BaseTest
     {
         [TestMethod]
