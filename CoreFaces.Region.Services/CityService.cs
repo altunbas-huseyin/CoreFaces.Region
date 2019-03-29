@@ -19,7 +19,7 @@ namespace CoreFaces.Region.Services
     public class CityService : ICityService
     {
         private readonly ICityRepository _statusRepository;
-        public CityService(RegionDatabaseContext databaseContext, IOptions<CitySettings> statusSettings, IHttpContextAccessor iHttpContextAccessor)
+        public CityService(RegionDatabaseContext databaseContext, IOptions<RegionSettings> statusSettings, IHttpContextAccessor iHttpContextAccessor)
         {
             _statusRepository = new CityRepository(databaseContext, statusSettings, iHttpContextAccessor);
         }

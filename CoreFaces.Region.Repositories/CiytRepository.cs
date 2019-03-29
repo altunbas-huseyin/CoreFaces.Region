@@ -23,7 +23,7 @@ namespace CoreFaces.Region.Repositories
 
         private readonly RegionDatabaseContext _databaseContext;
 
-        public CityRepository(RegionDatabaseContext databaseContext, IOptions<CitySettings> statusSettings, IHttpContextAccessor iHttpContextAccessor) : base("City", iHttpContextAccessor, statusSettings.Value.CityLicenseDomain, statusSettings.Value.CityLicenseKey)
+        public CityRepository(RegionDatabaseContext databaseContext, IOptions<RegionSettings> statusSettings, IHttpContextAccessor iHttpContextAccessor) : base("City", iHttpContextAccessor, statusSettings.Value.CityLicenseDomain, statusSettings.Value.CityLicenseKey)
         {
             _databaseContext = databaseContext;
         }
