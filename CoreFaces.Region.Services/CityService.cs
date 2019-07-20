@@ -18,52 +18,52 @@ namespace CoreFaces.Region.Services
 
     public class CityService : ICityService
     {
-        private readonly ICityRepository _statusRepository;
+        private readonly ICityRepository _cityRepository;
         public CityService(RegionDatabaseContext databaseContext, IOptions<RegionSettings> statusSettings, IHttpContextAccessor iHttpContextAccessor)
         {
-            _statusRepository = new CityRepository(databaseContext, statusSettings, iHttpContextAccessor);
+            _cityRepository = new CityRepository(databaseContext, statusSettings, iHttpContextAccessor);
         }
 
         public Models.Domain.City GetById(int id)
         {
-            return _statusRepository.GetById(id);
+            return _cityRepository.GetById(id);
         }
 
         public int Save(Models.Domain.City status)
         {
-            _statusRepository.Save(status);
+            _cityRepository.Save(status);
             return status.Id;
         }
 
         public bool Delete(int id)
         {
-            return _statusRepository.Delete(id);
+            return _cityRepository.Delete(id);
         }
 
         public bool Update(Models.Domain.City status)
         {
-            return _statusRepository.Update(status);
+            return _cityRepository.Update(status);
 
         }
 
         public List<Models.Domain.City> GetByTitle(string title)
         {
-            return _statusRepository.GetByTitle(title);
+            return _cityRepository.GetByTitle(title);
         }
 
         public List<Models.Domain.City> GetAll()
         {
-            return _statusRepository.GetAll();
+            return _cityRepository.GetAll();
         }
 
         public bool DropTables()
         {
-            return _statusRepository.DropTables();
+            return _cityRepository.DropTables();
         }
 
         public bool EnsureCreated()
         {
-            return _statusRepository.EnsureCreated();
+            return _cityRepository.EnsureCreated();
         }
     }
 

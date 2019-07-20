@@ -12,8 +12,8 @@ namespace CoreFaces.Region.UnitTest
 {
     public class BaseTest
     {
-        public RegionDatabaseContext _statusDatabaseContext;
-
+        public RegionDatabaseContext _regionDatabaseContext;
+        public readonly IRegionSchemaService regionSchemaService;
         public readonly ICityService _cityService;
 
 
@@ -30,14 +30,15 @@ namespace CoreFaces.Region.UnitTest
             builder.UseMySql(connectionString);
             //.UseInternalServiceProvider(serviceProvider); //burası postgress ile sıkıntı çıkartmıyor, fakat mysql'de çalışmıyor test esnasında hata veriyor.
 
-            _statusDatabaseContext = new RegionDatabaseContext(builder.Options);
+            _regionDatabaseContext = new RegionDatabaseContext(builder.Options);
             //_context.Database.Migrate();
 
-            CitySettings _statusSettings = new CitySettings() { FileUploadFolderPath = "c:/" };
-            IOptions<CitySettings> statusOptions = Options.Create(_statusSettings);
+            RegionSettings _regionSettings = new RegionSettings() { FileUploadFolderPath = "c:/" };
+            IOptions<RegionSettings> regionOptions = Options.Create(_regionSettings);
             IHttpContextAccessor iHttpContextAccessor = new HttpContextAccessor { HttpContext = new DefaultHttpContext() };
 
-            _cityService = new CityService(_statusDatabaseContext, statusOptions, iHttpContextAccessor);
+            _cityService = new CityService(_regionDatabaseContext, regionOptions, iHttpContextAccessor);
+            regionSchemaService = new RegionSchemaService(_regionDatabaseContext, regionOptions, iHttpContextAccessor);
 
         }
     }

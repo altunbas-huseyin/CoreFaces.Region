@@ -11,14 +11,14 @@ namespace CoreFaces.Region.UnitTest
         [TestMethod]
         public void DropTable()
         {
-            bool result = _cityService.DropTables();
+            bool result = regionSchemaService.DropTables();
             Assert.AreEqual(result, true);
         }
 
         [TestMethod]
         public void EnsureCreated()
         {
-            bool result = _cityService.EnsureCreated();
+            bool result = regionSchemaService.EnsureCreated();
             Assert.AreEqual(result, true);
         }
     }
